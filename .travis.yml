@@ -20,7 +20,7 @@ after_success:
   - docker build -t maekeybass/multi-nginx ./nginx
   - docker build -t maekeybass/multi-server ./server
   - docker build -t maekeybass/multi-worker ./worker
-  # Log in to the docker CLI
+  # Log in to the docker CLI - The env variables were added to travisCI
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   # Take those images and push them to docker hub
   - docker push maekeybass/multi-client

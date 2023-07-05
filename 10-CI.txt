@@ -26,3 +26,14 @@ git branch -M main
 git remote add origin git@github.com:MarkeyBass/multi-container-fibonacci.git
 git remote -v
 git push -u origin main
+
+
+--> create alink between github and travisCI
+
+
+Adding dockerhub id and pass to travisCI inside  
+    MarkeyBass / multi-container-fibonacci --> settings
+
+    in the environment variable section:
+    DOCKER_ID: MarkeyBass
+    DOCKER_PASSWORD: *********
