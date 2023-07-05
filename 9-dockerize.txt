@@ -1,0 +1,28 @@
+!) first step is creating and testing the Dockerfiles
+
+In client/ add Dockerfile.dev
+-------------------------------
+FROM node:16-alpine
+WORKDIR '/app'
+COPY ./package.json ./
+RUN npm install
+COPY . .
+CMD ["npm", "run", "start"]
+
+💲 cd client/
+💲 docker build -t markeybass/fib-react-dev -f Dockerfile.dev .
+💲 docker run --name fib-react-dev -p 3000:3000 markeybass/fib-react-dev
+
+💲 cd servet/
+💲 docker build -t markeybass/fib-server-dev -f Dockerfile.dev .
+💲 docker run --name fib-server-dev markeybass/fib-server-dev
+
+💲 cd worker/
+💲 docker build -t markeybass/fib-worker-dev -f Dockerfile.dev .
+💲 docker run --name fib-worker-dev markeybass/fib-worker-dev
+
+
+Creating and starting ocker-compose
+-------------------------------------
+#                   --build -> force a rebuild of everything
+💲 docker-compose up --build

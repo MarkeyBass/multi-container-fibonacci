@@ -1,0 +1,21 @@
+deployment-tp-AWS-flow
+------------------------
+Push to githib
+Travis automatically pulls repo
+Travis builds test image, tests code
+Travis builds prod images
+Travis pushes built prod images to DockerHub
+Travis pushes project to AWS EB
+EB pulls images from Docker Hub, deploys
+
+
+
+Before prod deployment
+--------------------------
+creating production Docker files
+
+
+creating .travis.yml file
+
+Creating git and githup repos
+
