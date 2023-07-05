@@ -8,22 +8,22 @@ services:
 
 # build test version of the React project
 before_install:                                                    # the build context - where the project files to our image can be found (instead of `.`)
-  - docker build -t maekeybass/react-test -f ./client/Dockerfile.dev ./client
+  - docker build -t markeybass/react-test -f ./client/Dockerfile.dev ./client
 
 # Run the tests - If any ofthe tests will exit with status code !== 0 --> Travis will assume that the build failed
 script:
-  - docker run -e CI=true maekeybass/react-test npm test
+  - docker run -e CI=true markeybass/react-test npm test
 
 # Build and push to dockerhub
 after_success:
-  - docker build -t maekeybass/multi-client ./client
-  - docker build -t maekeybass/multi-nginx ./nginx
-  - docker build -t maekeybass/multi-server ./server
-  - docker build -t maekeybass/multi-worker ./worker
-  # Log in to the docker CLI - The env variables were added to travisCI
+  - docker build -t markeybass/multi-fibo-client ./client
+  - docker build -t markeybass/multi-fibo-nginx ./nginx
+  - docker build -t markeybass/multi-fibo-server ./server
+  - docker build -t markeybass/multi-fibo-worker ./worker
+  # Log in to the docker CLI (in one command) - The env variables were added to travisCI
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   # Take those images and push them to docker hub
-  - docker push maekeybass/multi-client
-  - docker push maekeybass/multi-nginx
-  - docker push maekeybass/multi-server
-  - docker push maekeybass/multi-worker
+  - docker push markeybass/multi-fibo-client
+  - docker push markeybass/multi-fibo-nginx
+  - docker push markeybass/multi-fibo-server
+  - docker push markeybass/multi-fibo-worker
