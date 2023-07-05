@@ -19,3 +19,10 @@ creating .travis.yml file
 
 Creating git and githup repos
 
+git init
+git add .
+git commit -m "initial commit"
+git branch -M main
+git remote add origin git@github.com:MarkeyBass/multi-container-fibonacci.git
+git remote -v
+git push -u origin main
